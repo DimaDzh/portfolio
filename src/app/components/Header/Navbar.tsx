@@ -3,6 +3,7 @@ import Link from "next/link";
 import React, { FC, useEffect, useState } from "react";
 import Logo from "./Logo";
 import { scroller } from "react-scroll";
+import { scrollToSection } from "@/app/utils/scrollers";
 const Navbar: FC = () => {
   const [nav, setNav] = useState<boolean>(false);
   const [shadow, setShadow] = useState<boolean>(false);
@@ -25,14 +26,6 @@ const Navbar: FC = () => {
     };
     window.addEventListener("scroll", handleShadow);
   }, []);
-
-  const scrollToSection = (id: string) => {
-    scroller.scrollTo(id, {
-      smooth: true,
-      duration: 500,
-      offset: -125,
-    });
-  };
 
   return (
     <section
