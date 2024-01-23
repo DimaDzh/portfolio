@@ -5,7 +5,7 @@ import MobNavbar from "./MobNavbar";
 const HeaderBar = () => {
   return (
     <>
-      <div className="hidden lg:flex">
+      <div className="hidden overflow-hidden lg:flex">
         <Navbar />
       </div>
       <div className="lg:hidden  ">
