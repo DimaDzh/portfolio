@@ -8,7 +8,7 @@ type SkillsItemProps = {
 
 const SkillsItem = ({ icon, title }: SkillsItemProps) => {
   return (
-    <div className="p-4 lg:p-6 shadow-xl flex items-center justify-center rounded-xl hover:scale-105 ease-in duration-300">
+    <div className="p-4 lg:p-6 shadow-xl flex items-center justify-center h-32 rounded-xl hover:scale-105 ease-in duration-300">
       <div className="grid grid-cols-2 gap-4 justify-center items-center">
         <div className="m-auto">
           <Image src={icon} width={64} height={64} alt={title} />
