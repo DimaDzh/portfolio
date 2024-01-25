@@ -21,8 +21,8 @@ const Main: FC = () => {
             <p className="py-4 text-gray-600 sm:max-w-[70%] m-auto">
               I have a strong foundation in front-end and experience in web
               application development. I&apos;m fast learner, easily adaptable
-              to new technology stacks, and eager to join innovative projects.
-              to contribute to innovative projects.
+              to new technology stacks, and eager to join innovative projects to
+              contribute to innovative projects.
             </p>
           </main>
           <section className="flex items-center flex-wrap justify-between max-w-[500px] m-auto py-4">
