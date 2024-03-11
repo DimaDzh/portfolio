@@ -18,7 +18,7 @@ const AboutMe: FC = () => {
             I bring commercial experience in web application development using
             NextJS and StrapiJS, establishing a strong foundation in front-end
             development. Having successfully completed the Advanced course at an
-            A-Level IT school, I've acquired essential skills and hands-on
+            A-Level IT school, I&apos;ve acquired essential skills and hands-on
             experience in development.
           </p>
 
