@@ -11,7 +11,7 @@ const ProjectList: FC = () => {
       <header className="mx-auto py-16">
         <h2 className="py-4">What I`ve Built</h2>
       </header>
-      <main className=" flex justify-center flex-col lg:flex-row">
+      <ul className=" flex justify-center flex-col lg:flex-row">
         <ProjectItem
           title={"MAGASINS BIO BIOMONDE"}
           backgroundImg={BiomondeImage}
@@ -30,7 +30,7 @@ const ProjectList: FC = () => {
           tech={"React TS"}
           projectUrl={"https://github.com/DimaDzh/js-modulwork"}
         />
-      </main>
+      </ul>
     </section>
   );
 };

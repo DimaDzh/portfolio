@@ -13,7 +13,7 @@ const MainContactCard = ({ icon, link }: MainContactCardProps) => {
     hover: { scale: 1.01, rotate: 380 },
   };
   return (
-    <>
+    <li>
       <Link href={link} target="_blank" rel="noreferrer">
         <motion.div
           className="rounded-full shadow-lg shadow-gray-400 p-5 cursor-pointer transform transition-transform duration-300"
@@ -25,7 +25,7 @@ const MainContactCard = ({ icon, link }: MainContactCardProps) => {
           </motion.div>
         </motion.div>
       </Link>
-    </>
+    </li>
   );
 };
 

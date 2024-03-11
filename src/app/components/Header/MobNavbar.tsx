@@ -54,36 +54,24 @@ const MobNavbar = (props: Props) => {
         </header>
         <main className="py-2 flex flex-col">
           <ul className="uppercase">
-            <Link href="/">
-              <li onClick={() => setNav(false)} className="py-2 text-sm">
-                Home
-              </li>
-            </Link>
-            <Link href="/#about">
-              <li onClick={() => setNav(false)} className="py-2 text-sm">
-                About
-              </li>
-            </Link>
-            <Link href="/#skills">
-              <li onClick={() => setNav(false)} className="py-2 text-sm">
-                Skills
-              </li>
-            </Link>
-            <Link href="/#projects">
-              <li onClick={() => setNav(false)} className="py-2 text-sm">
-                Projects
-              </li>
-            </Link>
-            <Link href="/resume">
-              <li onClick={() => setNav(false)} className="py-2 text-sm">
-                Resume
-              </li>
-            </Link>
-            <Link href="/#contact">
-              <li onClick={() => setNav(false)} className="py-2 text-sm">
-                Contact
-              </li>
-            </Link>
+            <li onClick={() => setNav(false)} className="py-2 text-sm">
+              <Link href="/">Home</Link>
+            </li>
+            <li onClick={() => setNav(false)} className="py-2 text-sm">
+              <Link href="/#about">About</Link>
+            </li>
+            <li onClick={() => setNav(false)} className="py-2 text-sm">
+              <Link href="/#skills">Skills</Link>
+            </li>
+            <li onClick={() => setNav(false)} className="py-2 text-sm">
+              <Link href="/#projects">Projects</Link>
+            </li>
+            <li onClick={() => setNav(false)} className="py-2 text-sm">
+              <Link href="/resume">Resume</Link>
+            </li>
+            <li onClick={() => setNav(false)} className="py-2 text-sm">
+              <Link href="/#contact">Contact</Link>
+            </li>
           </ul>
           <section className="pt-15">
             <p className="uppercase tracking-widest text-[#5651e5]">
