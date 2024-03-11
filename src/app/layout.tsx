@@ -7,8 +7,14 @@ import GoogleAnalytics from "./components/common/GoogleAnalytics";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Portfolio",
-  description: "Dzharty Dmytro Front-end developer",
+  title: {
+    default: "Portfolio | Dzharty Dmytro",
+    template: "%s | Dzharty Dmytro",
+  },
+  description: "Portfolio of Dzharty Dmytro Front-end developer",
+  twitter: {
+    card: "summary_large_image",
+  },
 };
 
 export default function RootLayout({
@@ -18,6 +24,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <meta
+        name="google-site-verification"
+        content="D4ZbfYfHQmGJG_bt5GLI15BCa0pSGFGdtT-qR7b7ksI"
+      />
       <GoogleAnalytics measurementId="G-KGRLDV8Z5M" />
       <body className={`${inter.className} scroll-smooth `}>
         <HeaderLayout />
