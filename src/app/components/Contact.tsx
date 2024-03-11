@@ -37,7 +37,7 @@ const Contact: FC = () => {
               </div>
               <div>
                 <h3 className="uppercase pt-8">Connect With Me</h3>
-                <ul className="flex items-center flex-wrap justify-between max-w-[500px] m-auto py-4">
+                <div className="flex items-center flex-wrap justify-between max-w-[500px] m-auto py-4">
                   {contactsList.map((item, index) => {
                     return (
                       <MainContactCard
@@ -47,7 +47,7 @@ const Contact: FC = () => {
                       />
                     );
                   })}
-                </ul>
+                </div>
               </div>
             </section>
           </div>
