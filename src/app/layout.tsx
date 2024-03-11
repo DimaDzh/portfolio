@@ -8,10 +8,11 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
-    default: "Portfolio | Dzharty Dmytro",
+    default: "Portfolio of Dzharty Dmytro: Projects, Skills, and Contacts",
     template: "%s | Dzharty Dmytro",
   },
-  description: "Portfolio of Dzharty Dmytro Front-end developer",
+  description:
+    "Explore the portfolio of Dzharty Dmytro, a skilled front-end developer showcasing own projects and designs",
   twitter: {
     card: "summary_large_image",
   },

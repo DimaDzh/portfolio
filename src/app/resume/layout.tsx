@@ -2,8 +2,9 @@ import { Metadata } from "next/types";
 import React from "react";
 
 export const metadata: Metadata = {
-  title: "CV",
-  description: "CV of Dzharty Dmytro. You can download CV from page",
+  title: "Curriculum Vitae (CV)",
+  description:
+    "Download Dzharty Dmytro's CV - Professional Resume and Portfolio",
 };
 
 export default async function LayoutRoute({
