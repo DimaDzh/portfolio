@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import HeaderLayout from "./components/Header/HeaderLayout";
 import GoogleAnalytics from "./components/common/GoogleAnalytics";
 import { Analytics } from "@vercel/analytics/react";
 import HeaderBar from "./components/Header/HeaderBar";
