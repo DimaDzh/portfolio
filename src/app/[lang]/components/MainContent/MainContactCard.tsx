@@ -1,10 +1,13 @@
+import getIconComponent from "@/[lang]/utils/getReactIcon";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import React, { ReactNode } from "react";
+import Icon from "../common/IconReact";
 
 type MainContactCardProps = {
+  name: string;
   link: string;
-  icon: ReactNode;
+  icon: string;
 };
 
 const MainContactCard = ({ icon, link }: MainContactCardProps) => {
@@ -12,6 +15,7 @@ const MainContactCard = ({ icon, link }: MainContactCardProps) => {
     rest: { scale: 1 },
     hover: { scale: 1.01, rotate: 380 },
   };
+
   return (
     <>
       <Link href={link} target="_blank" rel="noreferrer">
@@ -21,7 +25,7 @@ const MainContactCard = ({ icon, link }: MainContactCardProps) => {
           whileHover="hover"
         >
           <motion.div whileHover={{ y: -1 }} className="text-2xl">
-            {icon}
+            <Icon iconName={icon} />
           </motion.div>
         </motion.div>
       </Link>

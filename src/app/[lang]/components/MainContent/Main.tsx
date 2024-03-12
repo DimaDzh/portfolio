@@ -1,9 +1,19 @@
 "use client";
 import React, { FC } from "react";
 import MainContactCard from "./MainContactCard";
-import { contactsList } from "./data";
 
-const Main: FC = () => {
+export type SocialContactData = {
+  data: {
+    id: number;
+    attributes: {
+      name: string;
+      link: string;
+      icon: string;
+    };
+  }[];
+};
+
+const Main: FC<SocialContactData> = ({ data }) => {
   return (
     <section id="home" className="w-full h-auto mt-32 text-center">
       <main className="w-full h-full mx-auto p-2 flex justify-center items-center">
@@ -26,12 +36,13 @@ const Main: FC = () => {
             </p>
           </main>
           <section className="flex items-center flex-wrap justify-between max-w-[500px] m-auto py-4">
-            {contactsList.map((item, index) => {
+            {data.map(({ attributes, id }, index) => {
               return (
                 <MainContactCard
-                  key={index}
-                  icon={item.icon}
-                  link={item.link}
+                  key={id}
+                  icon={attributes.icon}
+                  link={attributes.link}
+                  name={attributes.name}
                 />
               );
             })}

@@ -1,10 +1,16 @@
 "use client";
 import React, { FC } from "react";
-import SkillsItem from "./SkillsItem";
-import { skillsData } from "./data";
+import SkillsItem, { SkillsItemProps } from "./SkillsItem";
 import { motion } from "framer-motion";
 
-const SkillsList: FC = () => {
+type SkillsListData = {
+  data: {
+    id: number;
+    attributes: SkillsItemProps;
+  }[];
+};
+
+const SkillsList: FC<SkillsListData> = ({ data }) => {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
@@ -25,11 +31,17 @@ const SkillsList: FC = () => {
           initial="hidden"
           animate="visible"
         >
-          {skillsData.map((item, index) => (
-            <motion.div key={"skill" + index} variants={itemVariants}>
-              <SkillsItem title={item.title} icon={item.icon} />
-            </motion.div>
-          ))}
+          {data &&
+            data.map(({ attributes, id }, index) => (
+              <motion.div key={"skill" + id} variants={itemVariants}>
+                <SkillsItem
+                  name={attributes.name}
+                  icon={attributes.icon}
+                  link={attributes.link}
+                  locale={attributes.locale}
+                />
+              </motion.div>
+            ))}
         </motion.ul>
       </main>
     </section>

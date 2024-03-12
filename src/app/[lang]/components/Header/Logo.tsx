@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { FC } from "react";
-import NavLogo from "../../../../public/assets/logo/D-D.svg";
+import NavLogo from "../../../../../public/assets/logo/D-D.svg";
 
 const Logo: FC = () => {
   return (

@@ -2,12 +2,12 @@
 import Image from "next/image";
 import React, { FC } from "react";
 import { HiOutlineChevronDoubleUp } from "react-icons/hi";
-import ContactImage from "../../../public/assets/contactiamge.png";
-import { contactsList } from "./MainContent/data";
+import ContactImage from "../../../../public/assets/contactiamge.png";
 import MainContactCard from "./MainContent/MainContactCard";
 import { scrollToSection } from "../utils/scrollers";
+import { SocialContactData } from "./MainContent/Main";
 
-const Contact: FC = () => {
+const Contact: FC<SocialContactData> = ({ data }) => {
   return (
     <section id="contact" className="w-full container">
       <main className="max-w-5xl m-auto py-16 w-full ">
@@ -38,12 +38,13 @@ const Contact: FC = () => {
               <div>
                 <h3 className="uppercase pt-8">Connect With Me</h3>
                 <div className="flex items-center flex-wrap justify-between max-w-[500px] m-auto py-4">
-                  {contactsList.map((item, index) => {
+                  {data.map(({ attributes }, index) => {
                     return (
                       <MainContactCard
                         key={index}
-                        icon={item.icon}
-                        link={item.link}
+                        icon={attributes.icon}
+                        link={attributes.link}
+                        name={attributes.name}
                       />
                     );
                   })}

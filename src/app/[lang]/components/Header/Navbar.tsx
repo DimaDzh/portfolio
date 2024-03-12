@@ -3,7 +3,8 @@ import Link from "next/link";
 import React, { FC, useEffect, useState } from "react";
 import Logo from "./Logo";
 import { scroller } from "react-scroll";
-import { scrollToSection } from "@/app/utils/scrollers";
+import { scrollToSection } from "../../utils/scrollers";
+
 const Navbar: FC = () => {
   const [nav, setNav] = useState<boolean>(false);
   const [shadow, setShadow] = useState<boolean>(false);
