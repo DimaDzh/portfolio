@@ -47,3 +47,20 @@ type StrapiImageFormats = {
   medium: StrapiImageFormat;
   thumbnail: StrapiImageFormat;
 };
+
+export type MenusItem = {
+  data: {
+    id: number;
+    attributes: {
+      order: number;
+      title: string;
+      url: string;
+      target: string;
+    };
+  }[];
+};
+
+export type NavbarData = {
+  logoUrl: string;
+  menusList: MenusItem;
+};

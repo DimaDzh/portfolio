@@ -4,8 +4,9 @@ import React, { FC, useEffect, useState } from "react";
 import Logo from "./Logo";
 import { scroller } from "react-scroll";
 import { scrollToSection } from "../../utils/scrollers";
+import { NavbarData } from "@/[lang]/types";
 
-const Navbar: FC = () => {
+const Navbar: FC<NavbarData> = ({ logoUrl, menusList }) => {
   const [nav, setNav] = useState<boolean>(false);
   const [shadow, setShadow] = useState<boolean>(false);
   const [navBg, setNavBg] = useState<string>("#bfd4df");
@@ -36,55 +37,25 @@ const Navbar: FC = () => {
       }`}
     >
       <div className="flex justify-between items-center w-full h-full container">
-        <Logo />
+        <Logo url={logoUrl} />
         <>
           <ul
             style={{ color: `${linkColor}` }}
             className="hidden lg:flex gap-x-10 text-sm"
           >
-            <li
-              onClick={() => {
-                scrollToSection("home");
-              }}
-              className=" uppercase border-b border-white/0 hover:border-white hover:text-sm"
-            >
-              <Link href="/">Home</Link>
-            </li>
-            <li
-              onClick={() => {
-                scrollToSection("about");
-              }}
-              className=" uppercase border-b border-white/0 hover:border-white hover:text-sm"
-            >
-              <Link href="/#about">About</Link>
-            </li>
-            <li
-              onClick={() => {
-                scrollToSection("skills");
-              }}
-              className="uppercase border-b border-white/0 hover:border-white hover:text-sm"
-            >
-              <Link href="/#skills">Skills</Link>
-            </li>
-            <li
-              onClick={() => {
-                scrollToSection("projects");
-              }}
-              className=" uppercase border-b border-white/0 hover:border-white hover:text-sm"
-            >
-              <Link href="/#projects">Projects</Link>
-            </li>
-            <li className="uppercase border-b border-white/0 hover:border-white hover:text-sm">
-              <Link href="/resume">Resume</Link>
-            </li>
-            <li
-              onClick={() => {
-                scrollToSection("contact");
-              }}
-              className="uppercase border-b border-white/0 hover:border-white hover:text-sm"
-            >
-              <Link href="/#contact">Contact</Link>
-            </li>
+            {menusList.data.map(({ attributes, id }) => {
+              return (
+                <li
+                  key={"menus-" + id}
+                  onClick={() => {
+                    scrollToSection(attributes.title.toLocaleLowerCase());
+                  }}
+                  className=" uppercase border-b border-white/0 hover:border-white hover:text-sm"
+                >
+                  <Link href={attributes.url}>{attributes.title}</Link>
+                </li>
+              );
+            })}
           </ul>
         </>
       </div>

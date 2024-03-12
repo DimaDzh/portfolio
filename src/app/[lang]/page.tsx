@@ -37,6 +37,7 @@ export default async function Home() {
   const projectList = await getProjectList();
   const skillsList = await getSkillsList();
   const socialList = await getSocialList();
+
   return (
     <>
       <Main data={socialList.data} />

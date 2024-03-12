@@ -1,12 +1,13 @@
+"use client";
 import Link from "next/link";
 import React, { useState } from "react";
 import { AiOutlineClose, AiOutlineMail, AiOutlineMenu } from "react-icons/ai";
 import { FaLinkedinIn, FaGithub } from "react-icons/fa";
 import { BsFillPersonLinesFill } from "react-icons/bs";
 import Logo from "./Logo";
-type Props = {};
+import { NavbarData } from "@/[lang]/types";
 
-const MobNavbar = (props: Props) => {
+const MobNavbar = ({ logoUrl, menusList }: NavbarData) => {
   const [nav, setNav] = useState<boolean>(false);
   const [linkColor, setLinkColor] = useState<string>("#1f2937");
 
@@ -23,7 +24,7 @@ const MobNavbar = (props: Props) => {
       }
     >
       <div className="w-full h-fit flex items-center justify-between container">
-        <Logo />
+        <Logo url={logoUrl} />
         {/* Hamburger Icon */}
         <div
           style={{ color: `${linkColor}` }}
@@ -43,7 +44,7 @@ const MobNavbar = (props: Props) => {
       >
         <header className="">
           <div className="flex w-full items-center justify-between">
-            <Logo />
+            <Logo url={logoUrl} />
             <div
               onClick={handleNav}
               className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer"
@@ -54,24 +55,17 @@ const MobNavbar = (props: Props) => {
         </header>
         <main className="py-2 flex flex-col">
           <ul className="uppercase">
-            <li onClick={() => setNav(false)} className="py-2 text-sm">
-              <Link href="/">Home</Link>
-            </li>
-            <li onClick={() => setNav(false)} className="py-2 text-sm">
-              <Link href="/#about">About</Link>
-            </li>
-            <li onClick={() => setNav(false)} className="py-2 text-sm">
-              <Link href="/#skills">Skills</Link>
-            </li>
-            <li onClick={() => setNav(false)} className="py-2 text-sm">
-              <Link href="/#projects">Projects</Link>
-            </li>
-            <li onClick={() => setNav(false)} className="py-2 text-sm">
-              <Link href="/resume">Resume</Link>
-            </li>
-            <li onClick={() => setNav(false)} className="py-2 text-sm">
-              <Link href="/#contact">Contact</Link>
-            </li>
+            {menusList.data.map(({ attributes, id }) => {
+              return (
+                <li
+                  key={"mob-menus-" + id}
+                  onClick={() => setNav(false)}
+                  className="py-2 text-sm"
+                >
+                  <Link href={attributes.url}>{attributes.title}</Link>
+                </li>
+              );
+            })}
           </ul>
           <section className="pt-15">
             <p className="uppercase tracking-widest text-[#5651e5]">

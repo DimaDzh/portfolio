@@ -4,6 +4,8 @@ import "./globals.css";
 import HeaderLayout from "./components/Header/HeaderLayout";
 import GoogleAnalytics from "./components/common/GoogleAnalytics";
 import { Analytics } from "@vercel/analytics/react";
+import HeaderBar from "./components/Header/HeaderBar";
+import { fetchSWRData } from "./utils/fetch-api";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -21,11 +23,33 @@ export const metadata: Metadata = {
   },
 };
 
+async function getGlobal() {
+  try {
+    const response = await fetchSWRData("/api/global?populate=*");
+
+    return response;
+  } catch (error) {
+    console.error(error);
+  }
+}
+async function getMenus() {
+  try {
+    const response = await fetchSWRData("/api/menus?populate=*");
+
+    return response;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const globalInfo = await getGlobal();
+  const menusList = await getMenus();
+
   return (
     <html lang="en">
       <meta
@@ -35,7 +59,7 @@ export default async function RootLayout({
       <Analytics />
       <GoogleAnalytics measurementId="G-KGRLDV8Z5M" />
       <body className={`${inter.className} scroll-smooth `}>
-        <HeaderLayout />
+        <HeaderBar data={globalInfo.data} menus={menusList.data} />
         <main>{children}</main>
       </body>
     </html>

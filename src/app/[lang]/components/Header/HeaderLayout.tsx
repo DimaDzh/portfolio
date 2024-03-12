@@ -3,11 +3,7 @@ import React from "react";
 import HeaderBar from "./HeaderBar";
 
 const HeaderLayout = () => {
-  return (
-    <>
-      <HeaderBar />
-    </>
-  );
+  return <HeaderBar />;
 };
 
 export default HeaderLayout;
