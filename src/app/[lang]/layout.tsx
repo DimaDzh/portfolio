@@ -22,6 +22,17 @@ export const metadata: Metadata = {
   },
 };
 
+export const generateStaticParams = async () => {
+  const response = await fetchSWRData("/api/menus?populate=*");
+  const { data } = response.data[0].attributes.items;
+
+  return data.map(({ attributes }: any) => {
+    const slug = attributes.title.toLocaleLowerCase();
+
+    return slug;
+  });
+};
+
 async function getGlobal() {
   try {
     const response = await fetchSWRData("/api/global?populate=*");
@@ -34,7 +45,6 @@ async function getGlobal() {
 async function getMenus() {
   try {
     const response = await fetchSWRData("/api/menus?populate=*");
-
     return response;
   } catch (error) {
     console.error(error);
