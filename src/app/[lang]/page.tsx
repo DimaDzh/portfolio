@@ -36,12 +36,13 @@ async function getSocialList() {
 export default async function Home() {
   const projectList = await getProjectList();
   const skillsList = await getSkillsList();
+  const mainSkils = skillsList.data.slice(0, 4);
   const socialList = await getSocialList();
 
   return (
     <>
       <Main data={socialList.data} />
-      <Skills data={skillsList.data} />
+      <Skills data={mainSkils} header="Main skills" isShowMore />
       <ProjectList data={projectList.data} />
       <AboutMe />
       <Contact data={socialList.data} />

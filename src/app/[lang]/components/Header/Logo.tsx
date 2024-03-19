@@ -16,6 +16,7 @@ const Logo = ({ url }: Logo) => {
           width="200"
           height="200"
           className="object-cover"
+          priority
         />
       </Link>
     </div>

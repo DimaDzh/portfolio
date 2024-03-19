@@ -18,7 +18,12 @@ const MainContactCard = ({ icon, link }: MainContactCardProps) => {
 
   return (
     <>
-      <Link href={link} target="_blank" rel="noreferrer">
+      <Link
+        href={link}
+        target="_blank"
+        rel="noreferrer"
+        aria-label="Add my contact"
+      >
         <motion.div
           className="rounded-full shadow-lg shadow-gray-400 p-5 cursor-pointer transform transition-transform duration-300"
           variants={containerVariants}
