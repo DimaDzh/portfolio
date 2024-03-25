@@ -14,7 +14,7 @@ export type ProjectItemProps = {
 const ProjectItem: FC<ProjectItemProps> = ({ title, bgImage, tech, link }) => {
   const imageUrl: string = getStrapiImageUrl(bgImage);
   return (
-    <li className="relative flex items-center justify-center w-[full] h-96 lg:w-[400px] lg:h-auto mx-10 pb-2 w-400px shadow-xl shadow-gray-400 rounded-xl group hover:bg-gradient-to-r from-[#5651e5] to-[#709dff]">
+    <li className="relative flex items-center justify-center w-[full] h-full lg:w-[400px] lg:h-auto mx-10 pb-2 w-400px shadow-xl shadow-gray-400 rounded-xl group hover:bg-gradient-to-r from-[#5651e5] to-[#709dff]">
       <Image
         className="rounded-xl w-full h-full object-cover group-hover:opacity-10"
         width={500}

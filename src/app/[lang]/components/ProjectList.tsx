@@ -15,7 +15,7 @@ const ProjectList: FC<ProjectListData> = ({ data }) => {
         <h2 className="py-4">What I`ve Built</h2>
       </header>
       {data.length && (
-        <ul className=" flex justify-center flex-col lg:flex-row">
+        <ul className=" flex justify-center flex-col h-96 lg:flex-row">
           {data.map(({ attributes, id }) => {
             return (
               <ProjectItem
