@@ -22,9 +22,7 @@ type Data = {
 };
 
 const HeaderBar: FC<Data> = ({ data, menus }) => {
-  const { attributes } = data;
-
-  const logoUrl = getStrapiImageUrl(attributes.logo);
+  const logoUrl = getStrapiImageUrl(data?.attributes.logo);
   return (
     <>
       <div id="header" className="hidden overflow-hidden lg:flex">

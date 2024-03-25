@@ -23,10 +23,7 @@ export const metadata: Metadata = {
 };
 
 export const generateStaticParams = async () => {
-  const response = await fetchAPI("/api/menus", {
-    nested: true,
-    populate: "*",
-  });
+  const response = await fetchSWRData("/api/menus?populate=*");
   const { data } = response.data[0].attributes.items;
 
   return data.map(({ attributes }: any) => {
@@ -38,7 +35,7 @@ export const generateStaticParams = async () => {
 
 async function getGlobal() {
   try {
-    const response = await fetchAPI("/api/global", { populate: "*" });
+    const response = await fetchSWRData("/api/global?populate=*");
 
     return response;
   } catch (error) {
@@ -47,7 +44,7 @@ async function getGlobal() {
 }
 async function getMenus() {
   try {
-    const response = await fetchAPI("/api/menus", { populate: "*" });
+    const response = await fetchSWRData("/api/menus?populate=*");
     return response;
   } catch (error) {
     console.error(error);
@@ -70,8 +67,8 @@ export default async function RootLayout({
       />
       <Analytics />
       <GoogleAnalytics measurementId="G-KGRLDV8Z5M" />
-      <body className={`${inter.className} scroll-smooth `}>
-        <HeaderBar data={globalInfo.data} menus={menusList.data} />
+      <body className={`${inter.className} scroll-smooth`}>
+        <HeaderBar data={globalInfo.data} menus={menusList?.data} />
         <main>{children}</main>
       </body>
     </html>
