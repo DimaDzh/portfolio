@@ -42,22 +42,30 @@ async function getGlobal() {
     console.error(error);
   }
 }
-async function getMenus() {
-  try {
-    const response = await fetchSWRData("/api/menus?populate=*");
-    return response;
-  } catch (error) {
-    console.error(error);
-  }
+async function getMenus(locale: string): Promise<any> {
+  const path = `/menus`;
+
+  const urlParamsObject = {
+    nested: true,
+    populate: "*",
+  };
+
+  const result = await fetchAPI(path, urlParamsObject, {}, locale);
+
+  return result.data;
 }
 
 export default async function RootLayout({
   children,
-}: Readonly<{
+  params,
+}: {
   children: React.ReactNode;
-}>) {
+  params: { lang: string };
+}) {
   const globalInfo = await getGlobal();
-  const menusList = await getMenus();
+  const menusList = await getMenus(params.lang);
+
+  const localMenu = params.lang === "ua" ? menusList[1] : menusList[0];
 
   return (
     <html lang="en">
@@ -68,7 +76,7 @@ export default async function RootLayout({
       <Analytics />
       <GoogleAnalytics measurementId="G-KGRLDV8Z5M" />
       <body className={`${inter.className} scroll-smooth`}>
-        <HeaderBar data={globalInfo.data} menus={menusList?.data} />
+        <HeaderBar data={globalInfo.data} menus={localMenu} />
         <main>{children}</main>
       </body>
     </html>

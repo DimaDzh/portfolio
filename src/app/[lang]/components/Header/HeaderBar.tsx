@@ -18,7 +18,7 @@ type Data = {
       slug: string;
       items: MenusItem;
     };
-  }[];
+  };
 };
 
 const HeaderBar: FC<Data> = ({ data, menus }) => {
@@ -26,10 +26,10 @@ const HeaderBar: FC<Data> = ({ data, menus }) => {
   return (
     <>
       <div id="header" className="hidden overflow-hidden lg:flex">
-        <Navbar logoUrl={logoUrl} menusList={menus[0].attributes.items} />
+        <Navbar logoUrl={logoUrl} menusList={menus.attributes.items} />
       </div>
       <div id="header" className="lg:hidden">
-        <MobNavbar logoUrl={logoUrl} menusList={menus[0].attributes.items} />
+        <MobNavbar logoUrl={logoUrl} menusList={menus.attributes.items} />
       </div>
     </>
   );
