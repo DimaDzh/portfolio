@@ -3,11 +3,13 @@ import AboutMe from "./components/AboutMe";
 import ProjectList from "./components/ProjectList";
 import Skills from "./components/Skills/SkillsList";
 import Main from "./components/MainContent/Main";
-import { fetchSWRData } from "./utils/fetch-api";
+import { fetchAPI } from "./utils/fetch-api";
 
 async function getProjectList() {
   try {
-    const response = await fetchSWRData("/api/projects?populate=*");
+    const response = await fetchAPI("/projects", {
+      populate: "*",
+    });
 
     return response;
   } catch (error) {
@@ -16,7 +18,7 @@ async function getProjectList() {
 }
 async function getSkillsList() {
   try {
-    const response = await fetchSWRData("/api/skills?populate=*");
+    const response = await fetchAPI("/skills", { populate: "*" });
 
     return response;
   } catch (error) {
@@ -25,7 +27,7 @@ async function getSkillsList() {
 }
 async function getSocialList() {
   try {
-    const response = await fetchSWRData("/api/socials?populate=*");
+    const response = await fetchAPI("/contacts");
 
     return response;
   } catch (error) {
@@ -36,7 +38,7 @@ async function getSocialList() {
 export default async function Home() {
   const projectList = await getProjectList();
   const skillsList = await getSkillsList();
-  const mainSkils = skillsList.data.slice(0, 4);
+  const mainSkils = skillsList?.data?.slice(0, 4);
   const socialList = await getSocialList();
 
   return (

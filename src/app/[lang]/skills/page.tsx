@@ -1,11 +1,11 @@
 import React from "react";
-import { fetchSWRData } from "../utils/fetch-api";
+import { fetchAPI, fetchSWRData } from "../utils/fetch-api";
 import Skills from "../components/Skills/SkillsList";
 type Props = {};
 
 async function getSkillsList() {
   try {
-    const response = await fetchSWRData("/api/skills?populate=*");
+    const response = await fetchAPI("/skills", { populate: "*" });
 
     return response;
   } catch (error) {

@@ -7,15 +7,13 @@ import { FaLinkedinIn, FaTelegram, FaGithub } from "react-icons/fa";
 // Create a function to map icon names to their corresponding React Icons
 const getIconComponent = (iconName: string) => {
   switch (iconName) {
-    case "FaLinkedinIn":
+    case "linkedin":
       return FaLinkedinIn;
-    case "FaTelegram":
+    case "telegram":
       return FaTelegram;
-    case "AiOutlineMail":
+    case "email":
       return AiOutlineMail;
-    case "BsFillPersonLinesFill":
-      return BsFillPersonLinesFill;
-    case "FaGithub":
+    case "github":
       return FaGithub;
     default:
       console.warn(`Icon "${iconName}" not found`);

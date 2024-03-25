@@ -10,7 +10,7 @@ type MainContactCardProps = {
   icon: string;
 };
 
-const MainContactCard = ({ icon, link }: MainContactCardProps) => {
+const MainContactCard = ({ icon, link, name }: MainContactCardProps) => {
   const containerVariants = {
     rest: { scale: 1 },
     hover: { scale: 1.01, rotate: 380 },
@@ -30,7 +30,7 @@ const MainContactCard = ({ icon, link }: MainContactCardProps) => {
           whileHover="hover"
         >
           <motion.div whileHover={{ y: -1 }} className="text-2xl">
-            <Icon iconName={icon} />
+            <Icon iconName={name} />
           </motion.div>
         </motion.div>
       </Link>

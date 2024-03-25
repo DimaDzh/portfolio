@@ -4,7 +4,7 @@ import "./globals.css";
 import GoogleAnalytics from "./components/common/GoogleAnalytics";
 import { Analytics } from "@vercel/analytics/react";
 import HeaderBar from "./components/Header/HeaderBar";
-import { fetchSWRData } from "./utils/fetch-api";
+import { fetchAPI, fetchSWRData } from "./utils/fetch-api";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -23,7 +23,10 @@ export const metadata: Metadata = {
 };
 
 export const generateStaticParams = async () => {
-  const response = await fetchSWRData("/api/menus?populate=*");
+  const response = await fetchAPI("/api/menus", {
+    nested: true,
+    populate: "*",
+  });
   const { data } = response.data[0].attributes.items;
 
   return data.map(({ attributes }: any) => {
@@ -35,7 +38,7 @@ export const generateStaticParams = async () => {
 
 async function getGlobal() {
   try {
-    const response = await fetchSWRData("/api/global?populate=*");
+    const response = await fetchAPI("/api/global", { populate: "*" });
 
     return response;
   } catch (error) {
@@ -44,7 +47,7 @@ async function getGlobal() {
 }
 async function getMenus() {
   try {
-    const response = await fetchSWRData("/api/menus?populate=*");
+    const response = await fetchAPI("/api/menus", { populate: "*" });
     return response;
   } catch (error) {
     console.error(error);
