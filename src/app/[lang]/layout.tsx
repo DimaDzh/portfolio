@@ -5,6 +5,8 @@ import GoogleAnalytics from "./components/common/GoogleAnalytics";
 import { Analytics } from "@vercel/analytics/react";
 import HeaderBar from "./components/Header/HeaderBar";
 import { fetchAPI, fetchSWRData } from "./utils/fetch-api";
+import HireMeBtn from "./components/common/Buttons/HireMeBtn";
+import TransitionEffect from "./components/common/TransitionEffect";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -77,7 +79,9 @@ export default async function RootLayout({
       <GoogleAnalytics measurementId="G-KGRLDV8Z5M" />
       <body className={`${inter.className} scroll-smooth`}>
         <HeaderBar data={globalInfo.data} menus={localMenu} />
+        {/* <TransitionEffect /> */}
         <main>{children}</main>
+        <HireMeBtn />
       </body>
     </html>
   );

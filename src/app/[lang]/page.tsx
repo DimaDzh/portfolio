@@ -4,6 +4,8 @@ import ProjectList from "./components/ProjectList";
 import Skills from "./components/Skills/SkillsList";
 import Main from "./components/MainContent/Main";
 import { fetchAPI } from "./utils/fetch-api";
+import ScrollGallery from "./components/ScrollGallery";
+import PortfolioScroll from "./components/Projects/AnimantedList";
 
 async function getProjectList() {
   try {
@@ -45,6 +47,7 @@ export default async function Home() {
     <>
       <Main data={socialList.data} />
       <Skills data={mainSkils} header="Main skills" isShowMore />
+      {/* <PortfolioScroll data={projectList.data} /> */}
       <ProjectList data={projectList.data} />
       <AboutMe />
       <Contact data={socialList.data} />

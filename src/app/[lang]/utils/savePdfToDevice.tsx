@@ -12,7 +12,7 @@ const saveFile = (blob: Blob, fileName: string) => {
 export const savePdfToUser = async () => {
   try {
     // Use the correct path relative to the public folder
-    const response = await fetch("/assets/resume/CV_Dmytro_Dzharty.pdf");
+    const response = await fetch("/public/assets/resume/CV_Dmytro_Dzharty.pdf");
 
     if (!response.ok) {
       throw new Error("Failed to fetch the PDF file");

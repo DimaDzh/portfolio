@@ -1,6 +1,7 @@
 "use client";
 import React, { FC } from "react";
 import MainContactCard from "./MainContactCard";
+import AnimatedText from "../common/AnimatedText";
 
 export type SocialContactData = {
   data: {
@@ -19,12 +20,15 @@ const Main: FC<SocialContactData> = ({ data }) => {
       <main className="w-full h-full mx-auto p-2 flex justify-center items-center">
         <section>
           <header>
-            <p className="uppercase text-sm tracking-widest text-gray-600">
-              LET`S BUILD SOMETHING TOGETHER
-            </p>
-            <h1 className="py-4 text-gray-700">
-              Hello There, I am <span className="text-[#69697a]">Dmytro</span>
-            </h1>
+            <AnimatedText
+              text="LET`S BUILD SOMETHING TOGETHER"
+              className={"uppercase text-sm tracking-widest text-gray-600"}
+            />
+
+            <AnimatedText
+              text="Hello There, I am Dmytro "
+              className={"text-5xl text-gray-700 py-12"}
+            />
           </header>
           <main>
             <h2 className="py-2 text-gray-700">A Front-End Web Developer</h2>

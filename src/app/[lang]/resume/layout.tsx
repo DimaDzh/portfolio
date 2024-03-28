@@ -1,5 +1,6 @@
 import { Metadata } from "next/types";
 import React from "react";
+import TransitionEffect from "../components/common/TransitionEffect";
 
 export const metadata: Metadata = {
   title: "Curriculum Vitae (CV)",
@@ -12,5 +13,10 @@ export default async function LayoutRoute({
 }: {
   children: React.ReactNode;
 }) {
-  return <section className="container">{children}</section>;
+  return (
+    <section className="container">
+      <TransitionEffect />
+      {children}
+    </section>
+  );
 }

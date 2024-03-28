@@ -5,6 +5,7 @@ import Logo from "./Logo";
 import { scroller } from "react-scroll";
 import { scrollToSection } from "../../utils/scrollers";
 import { NavbarData } from "@/[lang]/types";
+import CustomLink from "../common/CustomLink";
 
 const Navbar: FC<NavbarData> = ({ logoUrl, menusList }) => {
   const [nav, setNav] = useState<boolean>(false);
@@ -50,9 +51,12 @@ const Navbar: FC<NavbarData> = ({ logoUrl, menusList }) => {
                   onClick={() => {
                     scrollToSection(attributes.title.toLocaleLowerCase());
                   }}
-                  className=" uppercase border-b border-white/0 hover:border-white hover:text-sm"
                 >
-                  <Link href={attributes.url}>{attributes.title}</Link>
+                  <CustomLink
+                    href={attributes.url}
+                    title={attributes.title}
+                    className={"uppercase"}
+                  />
                 </li>
               );
             })}
