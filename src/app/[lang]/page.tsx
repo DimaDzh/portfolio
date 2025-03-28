@@ -34,8 +34,8 @@ async function getSocialList() {
 
 export default async function Home() {
   return (
-    <>
+    <section className="block_scroll">
       <Main />
-    </>
+    </section>
   );
 }

@@ -17,7 +17,10 @@ export type SocialContactData = {
 
 const Main: FC = () => {
   return (
-    <section id="home" className="container flex items-center h-screen py-6">
+    <section
+      id="home"
+      className="container flex items-center py-6 block_scroll"
+    >
       <main className="grid grid-cols-3 gap-24 items-center w-full h-full">
         <section className="flex flex-col gap-4 font-bold w-full">
           <span className="text-[#0c0c0c] text-2xl"> Hello There,</span>

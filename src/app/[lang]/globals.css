@@ -38,6 +38,10 @@
   .car_pred {
     color: aqua;
   }
+
+  .block_scroll {
+    @apply overflow-hidden overflow-y-hidden;
+  }
 }
 
 ::view-transition-old(root),

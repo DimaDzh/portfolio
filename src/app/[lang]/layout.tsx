@@ -38,9 +38,7 @@ export default async function RootLayout({
         />
         <Analytics />
         <GoogleAnalytics measurementId="G-KGRLDV8Z5M" />
-        <body
-          className={`${inter.className} overflow-hidden overflow-y-hidden`}
-        >
+        <body className={`${inter.className} `}>
           <HeaderBar />
           <main>
             <>{children}</>

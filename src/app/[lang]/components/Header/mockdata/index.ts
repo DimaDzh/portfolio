@@ -46,6 +46,13 @@ export const mockHeaderBarData = {
         url: "/contact",
         target: "_self",
       },
+      {
+        id: 5,
+        order: 5,
+        title: "CV",
+        url: "/resume",
+        target: "_self",
+      },
     ],
   },
 };

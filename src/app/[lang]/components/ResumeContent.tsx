@@ -6,21 +6,11 @@ import SavePdfCvButton from "./SavePdfCvButton";
 
 const ResumeContent: FC = () => {
   return (
-    <section className="max-w-5xl mx-auto p-4 py-32">
+    <section className="max-w-5xl mx-auto py-2">
       <h2 className="text-center">Resume</h2>
       <header className="bg-[#d0d4d6] my-4 p-4 w-full flex rounded shadow flex-col lg:flex-row gap-5 justify-between items-center">
         <h2 className="text-center">Dzharty Dmytro</h2>
         <div className="flex gap-5 lg:gap-0 items-center">
-          <Link
-            href="https://www.linkedin.com/in/dzhartyds/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <FaLinkedinIn size={20} className="m-2" />
-          </Link>
-          <a href="https://github.com/DimaDzh" target="_blank" rel="noreferrer">
-            <FaGithub size={20} className="m-2" />
-          </a>
           <div className="m-2">
             <SavePdfCvButton />
           </div>
@@ -38,6 +28,8 @@ const ResumeContent: FC = () => {
           <span className="px-2">|</span>
           <span>Typescript</span>
           <span className="px-2">|</span>
+          <span>NodeJS,Express</span>
+          <span className="px-2">|</span>
           <span>HTML</span>
           <span className="px-2">|</span>
           <span>CSS</span>
@@ -51,6 +43,8 @@ const ResumeContent: FC = () => {
           <span>SASS</span>
           <span className="px-2">|</span>
           <span>Strapi CMS</span>
+          <span className="px-2">|</span>
+          <span>PostgeSQL</span>
         </div>
       </main>
       <>
@@ -127,7 +121,7 @@ const ResumeContent: FC = () => {
           <span className="font-bold italic">
             B1 (speaking-B1, reading-B2, listening-B1, writening-B1);
           </span>
-          <p className="italic">Italian: </p>
+          <p className="italic">Spanish: </p>
           <span className="font-bold italic">in the process of study.</span>
         </div>
       </>
