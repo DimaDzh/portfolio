@@ -4,7 +4,11 @@ import ProjectItem, { ProjectItemProps } from "./ProjectItem";
 type ProjectListData = {
   data: {
     id: number;
-    attributes: ProjectItemProps;
+    title: string;
+    description?: string;
+    technologies: string[];
+    githubLink?: string;
+    liveDemo?: string;
   }[];
 };
 
@@ -14,19 +18,29 @@ const ProjectList: FC<ProjectListData> = ({ data }) => {
       <header className="mx-auto py-16">
         <h2 className="py-4">What I`ve Built</h2>
       </header>
-      {data.length && (
-        <ul className=" flex justify-center flex-col h-96 lg:flex-row">
-          {data.map(({ attributes, id }) => {
-            return (
-              <ProjectItem
-                key={"project-item-" + id}
-                title={attributes.title}
-                bgImage={attributes.bgImage}
-                tech={attributes.tech}
-                link={attributes.link}
-              />
-            );
-          })}
+      {data.length > 0 && (
+        <ul className="grid grid-cols-3 gap-12 lg:flex-row">
+          {data.map(
+            ({
+              id,
+              technologies,
+              title,
+              description,
+              githubLink,
+              liveDemo,
+            }) => {
+              return (
+                <ProjectItem
+                  key={"project-item-" + id}
+                  title={title}
+                  description={description}
+                  technologies={technologies}
+                  githubLink={githubLink}
+                  liveDemo={liveDemo}
+                />
+              );
+            }
+          )}
         </ul>
       )}
     </section>

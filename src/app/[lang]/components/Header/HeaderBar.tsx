@@ -3,35 +3,32 @@ import Navbar from "./Navbar";
 import MobNavbar from "./MobNavbar";
 import { MenusItem, StrapiImage } from "@/[lang]/types";
 import { getStrapiImageUrl } from "@/[lang]/utils/getStrapiMedia";
-
+import { mockHeaderBarData } from "./mockdata";
 type Data = {
   data: {
     id: 1;
-    attributes: {
-      logo: StrapiImage;
-    };
+    logo: StrapiImage;
   };
   menus: {
     id: number;
-    attributes: {
-      title: string;
-      slug: string;
-      items: MenusItem;
-    };
+    title: string;
+    slug: string;
+    menusList: MenusItem[];
   };
 };
 
-const HeaderBar: FC<Data> = ({ data, menus }) => {
-  const logoUrl = getStrapiImageUrl(data?.attributes.logo);
+const HeaderBar: FC = () => {
+  const { data, menus } = mockHeaderBarData;
+  const logoUrl = getStrapiImageUrl(data?.logo);
   return (
-    <>
+    <header>
       <div id="header" className="hidden overflow-hidden lg:flex">
-        <Navbar logoUrl={logoUrl} menusList={menus.attributes.items} />
+        <Navbar logoUrl={logoUrl} menusList={menus.items} />
       </div>
       <div id="header" className="lg:hidden">
-        <MobNavbar logoUrl={logoUrl} menusList={menus.attributes.items} />
+        <MobNavbar logoUrl={logoUrl} menusList={menus.items} />
       </div>
-    </>
+    </header>
   );
 };
 

@@ -4,14 +4,11 @@ import ProjectList from "./components/ProjectList";
 import Skills from "./components/Skills/SkillsList";
 import Main from "./components/MainContent/Main";
 import { fetchAPI } from "./utils/fetch-api";
-
+import axios from "axios";
 async function getProjectList() {
   try {
-    const response = await fetchAPI("/projects", {
-      populate: "*",
-    });
-
-    return response;
+    const response = await axios.get("http://localhost:5000/api/projects");
+    return response.data;
   } catch (error) {
     console.error(error);
   }
@@ -36,18 +33,9 @@ async function getSocialList() {
 }
 
 export default async function Home() {
-  const projectList = await getProjectList();
-  const skillsList = await getSkillsList();
-  const mainSkils = skillsList?.data?.slice(0, 4);
-  const socialList = await getSocialList();
-
   return (
     <>
-      <Main data={socialList.data} />
-      <Skills data={mainSkils} header="Main skills" isShowMore />
-      <ProjectList data={projectList.data} />
-      <AboutMe />
-      <Contact data={socialList.data} />
+      <Main />
     </>
   );
 }

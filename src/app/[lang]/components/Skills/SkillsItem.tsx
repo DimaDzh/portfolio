@@ -11,7 +11,7 @@ export type SkillsItemProps = {
 };
 
 const SkillsItem = ({ icon, name, link, locale }: SkillsItemProps) => {
-  const imageUrl: string = getStrapiImageUrl(icon);
+  const imageUrl: string = icon.url;
   return (
     <Link
       href={link}

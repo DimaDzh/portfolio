@@ -2,22 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { FC } from "react";
 
-type Logo = {
-  url: string;
-};
-
-const Logo = ({ url }: Logo) => {
+const Logo = () => {
   return (
-    <div className="w-32 h-32 flex cursor-pointer">
-      <Link href="/">
-        <Image
-          src={url}
-          alt="/"
-          width="200"
-          height="200"
-          className="object-cover"
-          priority
-        />
+    <div className="flex cursor-pointer">
+      <Link className="text-[#05796B] text-[32px] font-bold" href="/">
+        <span className=""> dzhartyd</span>
       </Link>
     </div>
   );

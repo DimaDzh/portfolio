@@ -1,11 +1,14 @@
 "use client";
-import Link from "next/link";
+
 import React, { FC, useEffect, useState } from "react";
 import Logo from "./Logo";
 import { scroller } from "react-scroll";
 import { scrollToSection } from "../../utils/scrollers";
 import { NavbarData } from "@/[lang]/types";
-
+import SocialsList from "./SocialsList";
+import { useTransitionRouter } from "next-view-transitions";
+import { transform } from "next/dist/build/swc";
+import useAnimatedNavigation from "@/[lang]/hooks/useAnimatedNavigation";
 const Navbar: FC<NavbarData> = ({ logoUrl, menusList }) => {
   const [nav, setNav] = useState<boolean>(false);
   const [shadow, setShadow] = useState<boolean>(false);
@@ -23,42 +26,43 @@ const Navbar: FC<NavbarData> = ({ logoUrl, menusList }) => {
         setNavBg("#8fa3ad");
       } else {
         setShadow(false);
-        setNavBg("#bfd4df");
+        setNavBg("#687943");
       }
     };
     window.addEventListener("scroll", handleShadow);
   }, []);
 
+  const { handleLink } = useAnimatedNavigation();
+
   return (
-    <section
-      style={{ backgroundColor: `${navBg}` }}
-      className={`fixed w-full  z-[100] h-24 ${
-        shadow ? " shadow-xl ease-in-out duration-300" : "fixed"
-      }`}
-    >
-      <div className="flex justify-between items-center w-full h-full container">
-        <Logo url={logoUrl} />
-        <>
-          <ul
-            style={{ color: `${linkColor}` }}
-            className="hidden lg:flex gap-x-10 text-sm"
-          >
-            {menusList.data.map(({ attributes, id }) => {
-              return (
-                <li
-                  key={"menus-" + id}
-                  onClick={() => {
-                    scrollToSection(attributes.title.toLocaleLowerCase());
-                  }}
-                  className=" uppercase border-b border-white/0 hover:border-white hover:text-sm"
-                >
-                  <Link href={attributes.url}>{attributes.title}</Link>
-                </li>
-              );
-            })}
-          </ul>
-        </>
-      </div>
+    <section className={`flex items-center justify-between container py-6`}>
+      <Logo />
+      <ul
+        style={{ color: `${linkColor}` }}
+        className="hidden lg:flex gap-x-10 text-sm"
+      >
+        {menusList.map(({ title, url, id }) => {
+          return (
+            <li
+              key={"menus-" + id}
+              onClick={() => {
+                scrollToSection(title.toLocaleLowerCase());
+              }}
+              className=" uppercase border-b border-white/0 hover:border-white hover:text-sm"
+            >
+              <a
+                onClick={(e) => {
+                  handleLink(e, url);
+                }}
+                href={url}
+              >
+                {title}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+      <SocialsList />
     </section>
   );
 };

@@ -1,28 +1,6 @@
 export type StrapiImage = {
-  data: {
-    id: number;
-    attributes: {
-      name: string;
-      alternativeText: string | null;
-      caption: string | null;
-      width: number;
-      height: number;
-      formats: StrapiImageFormats;
-      hash: string;
-      ext: string;
-      mime: string;
-      size: number;
-      url: string;
-      previewUrl: null;
-      provider: string;
-      provider_metadata: {
-        public_id: string;
-        resource_type: string;
-      }[];
-      createdAt: string;
-      updatedAt: string;
-    };
-  };
+  url: string;
+  alt: string;
 };
 
 type StrapiImageFormat = {
@@ -49,18 +27,14 @@ type StrapiImageFormats = {
 };
 
 export type MenusItem = {
-  data: {
-    id: number;
-    attributes: {
-      order: number;
-      title: string;
-      url: string;
-      target: string;
-    };
-  }[];
+  order: number;
+  title: string;
+  url: string;
+  target: string;
+  id: number;
 };
 
 export type NavbarData = {
   logoUrl: string;
-  menusList: MenusItem;
+  menusList: MenusItem[];
 };

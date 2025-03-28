@@ -3,17 +3,14 @@ import React, { FC } from "react";
 import SkillsItem, { SkillsItemProps } from "./SkillsItem";
 import { motion } from "framer-motion";
 import Link from "next/link";
-
+import mockSkills from "./mockdata";
 type SkillsListData = {
   header: string;
-  data: {
-    id: number;
-    attributes: SkillsItemProps;
-  }[];
+
   isShowMore?: boolean;
 };
 
-const SkillsList: FC<SkillsListData> = ({ data, header, isShowMore }) => {
+const SkillsList: FC<SkillsListData> = ({ header, isShowMore }) => {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
@@ -34,8 +31,8 @@ const SkillsList: FC<SkillsListData> = ({ data, header, isShowMore }) => {
           initial="hidden"
           animate="visible"
         >
-          {data &&
-            data.map(({ attributes, id }, index) => (
+          {mockSkills &&
+            mockSkills.data.map(({ attributes, id }, index) => (
               <motion.li key={"skill" + id} variants={itemVariants}>
                 <SkillsItem
                   name={attributes.name}
