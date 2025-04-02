@@ -5,7 +5,17 @@ import GoogleAnalytics from "./components/common/GoogleAnalytics";
 import { Analytics } from "@vercel/analytics/react";
 import HeaderBar from "./components/Header/HeaderBar";
 import { ViewTransitions } from "next-view-transitions";
+import axios from "axios";
 const inter = Inter({ subsets: ["latin"] });
+
+async function getMenusList() {
+  try {
+    const response = await axios.get("http://localhost:5000/api/menus");
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+}
 
 export const metadata: Metadata = {
   title: {
@@ -29,6 +39,7 @@ export default async function RootLayout({
   children: React.ReactNode;
   params: { lang: string };
 }) {
+  const menus = await getMenusList();
   return (
     <ViewTransitions>
       <html lang="en">
@@ -39,7 +50,7 @@ export default async function RootLayout({
         <Analytics />
         <GoogleAnalytics measurementId="G-KGRLDV8Z5M" />
         <body className={`${inter.className} `}>
-          <HeaderBar />
+          <HeaderBar menus={menus} />
           <main>
             <>{children}</>
           </main>

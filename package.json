@@ -14,9 +14,10 @@
     "@types/react-scroll": "^1.8.10",
     "@vercel/analytics": "^1.2.2",
     "axios": "^1.8.4",
+    "clsx": "^2.1.1",
     "framer-motion": "^10.18.0",
     "negotiator": "^0.6.3",
-    "next": "14.1.0",
+    "next": "^14.1.0",
     "next-view-transitions": "^0.3.4",
     "pdfjs": "^2.5.3",
     "qs": "^6.11.0",
@@ -24,7 +25,8 @@
     "react-dom": "^18",
     "react-icons": "^4.7.1",
     "react-scroll": "^1.9.0",
-    "sharp": "^0.33.2"
+    "sharp": "^0.33.2",
+    "tailwind-merge": "^3.1.0"
   },
   "devDependencies": {
     "@types/negotiator": "^0.6.1",

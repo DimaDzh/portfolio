@@ -55,17 +55,18 @@ const MobNavbar = ({ logoUrl, menusList }: NavbarData) => {
         </header>
         <main className="py-2 flex flex-col">
           <ul className="uppercase">
-            {menusList.map(({ id, order, target, title, url }) => {
-              return (
-                <li
-                  key={"mob-menus-" + id}
-                  onClick={() => setNav(false)}
-                  className="py-2 text-sm"
-                >
-                  <Link href={url}>{title}</Link>
-                </li>
-              );
-            })}
+            {menusList &&
+              menusList.map(({ id, order, target, title, url }) => {
+                return (
+                  <li
+                    key={"mob-menus-" + id}
+                    onClick={() => setNav(false)}
+                    className="py-2 text-sm"
+                  >
+                    <Link href={url}>{title}</Link>
+                  </li>
+                );
+              })}
           </ul>
           <section className="pt-15">
             <p className="uppercase tracking-widest text-[#5651e5]">

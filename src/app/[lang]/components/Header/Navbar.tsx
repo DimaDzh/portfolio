@@ -41,26 +41,27 @@ const Navbar: FC<NavbarData> = ({ logoUrl, menusList }) => {
         style={{ color: `${linkColor}` }}
         className="hidden lg:flex gap-x-10 text-sm"
       >
-        {menusList.map(({ title, url, id }) => {
-          return (
-            <li
-              key={"menus-" + id}
-              onClick={() => {
-                scrollToSection(title.toLocaleLowerCase());
-              }}
-              className=" uppercase border-b border-white/0 hover:border-white hover:text-sm"
-            >
-              <a
-                onClick={(e) => {
-                  handleLink(e, url);
+        {menusList &&
+          menusList.map(({ title, url, id }) => {
+            return (
+              <li
+                key={"menus-" + id}
+                onClick={() => {
+                  scrollToSection(title.toLocaleLowerCase());
                 }}
-                href={url}
+                className=" uppercase border-b border-white/0 hover:border-white hover:text-sm"
               >
-                {title}
-              </a>
-            </li>
-          );
-        })}
+                <a
+                  onClick={(e) => {
+                    handleLink(e, url);
+                  }}
+                  href={url}
+                >
+                  {title}
+                </a>
+              </li>
+            );
+          })}
       </ul>
       <SocialsList />
     </section>

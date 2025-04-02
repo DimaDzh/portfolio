@@ -17,16 +17,20 @@ type Data = {
   };
 };
 
-const HeaderBar: FC = () => {
-  const { data, menus } = mockHeaderBarData;
+type HeaderBarProps = {
+  menus: MenusItem[];
+};
+
+const HeaderBar: FC<HeaderBarProps> = ({ menus: menusList }) => {
+  const { data } = mockHeaderBarData;
   const logoUrl = getStrapiImageUrl(data?.logo);
   return (
     <header>
       <div id="header" className="hidden overflow-hidden lg:flex">
-        <Navbar logoUrl={logoUrl} menusList={menus.items} />
+        <Navbar logoUrl={logoUrl} menusList={menusList} />
       </div>
       <div id="header" className="lg:hidden">
-        <MobNavbar logoUrl={logoUrl} menusList={menus.items} />
+        <MobNavbar logoUrl={logoUrl} menusList={menusList} />
       </div>
     </header>
   );
