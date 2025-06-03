@@ -43,3 +43,14 @@ export function formatOrderDate(dateString: string) {
   const day = String(date.getDate()).padStart(2, "0");
   return `${year}-${month}-${day}`;
 }
+
+// Helper to check for XSS and SQL injection patterns
+export const hasMaliciousInput = (value: string) => {
+  // Basic XSS: <script>, <img ... onerror=, etc.
+  const xssPattern =
+    /<\s*script|on\w+\s*=|<\s*img|<\s*iframe|<\s*svg|<\s*object|<\s*embed|<\s*link|<\s*meta|<\s*style|javascript:/i;
+  // Basic SQLi: common SQL keywords and patterns
+  const sqlPattern =
+    /('|--|;|\/\*|\*\/|\b(select|insert|update|delete|drop|union|alter|create|truncate|exec|declare|cast)\b)/i;
+  return xssPattern.test(value) || sqlPattern.test(value);
+};
