@@ -11,7 +11,7 @@ export const mockHeaderBarData = {
           alternativeText: "Logo",
         },
       },
-    } as StrapiImage,
+    } as any,
   },
   menus: {
     id: 1,

@@ -33,12 +33,15 @@ export default function componentResolver(
   // See https://webpack.js.org/api/module-methods/#import-1
 
   // Use react lazy loading to import the module. By convention: The file name needs to match the name of the component (what is a good idea)
-  let module = lazy(
+  const LazyComponent = lazy(
     () => import(`../components/server-components/${componentName}`)
   );
   // console.log(section);
   // Create react element. The 'type' argument needs to be a FunctionComponent, not a string
-  const reactElement = createElement(module, { data: section, key: index });
+  const reactElement = createElement(LazyComponent, {
+    data: section,
+    key: index,
+  });
 
   return (
     <Suspense fallback={<>loading...</>} key={index}>

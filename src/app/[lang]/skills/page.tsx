@@ -17,7 +17,7 @@ const SkillsPage = async (props: Props) => {
   const skillsList = await getSkillsList();
   return (
     <div className="my-24">
-      <Skills header="My skills" data={skillsList.data} />
+      {/* <Skills header="My skills" data={skillsList.data} /> */}
     </div>
   );
 };

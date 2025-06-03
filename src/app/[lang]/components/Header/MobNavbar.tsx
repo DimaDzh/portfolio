@@ -24,7 +24,7 @@ const MobNavbar = ({ logoUrl, menusList }: NavbarData) => {
       }
     >
       <div className="w-full h-fit flex items-center justify-between container">
-        <Logo url={logoUrl} />
+        <Logo />
         {/* Hamburger Icon */}
         <div
           style={{ color: `${linkColor}` }}
@@ -44,7 +44,7 @@ const MobNavbar = ({ logoUrl, menusList }: NavbarData) => {
       >
         <header className="">
           <div className="flex w-full items-center justify-between">
-            <Logo url={logoUrl} />
+            <Logo />
             <div
               onClick={handleNav}
               className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer"
