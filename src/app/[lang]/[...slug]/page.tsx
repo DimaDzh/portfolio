@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getPageBySlug } from "../utils/get-page-by-slug";
 import componentResolver from "../utils/component-resolver";
+import { use } from "react";
 
 type Props = {
   params: {
@@ -24,10 +25,15 @@ interface PageData {
   content: string;
   components: Array<{ type: string; data: Record<string, unknown> }>;
 }
+type Params = Promise<{ slug: string; lang: string }>;
+export async function generateMetadata({
+  params,
+}: {
+  params: Params;
+}): Promise<Metadata> {
+  const { slug, lang } = use(params);
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const slug = params.slug.join("/");
-  const pageData = await getPageBySlug(slug, params.lang);
+  const pageData = await getPageBySlug(slug, lang);
 
   return {
     title: pageData.title,
@@ -35,9 +41,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function PageRoute({ params }: Props) {
-  const slug = params.slug.join("/");
-  const pageData: PageData = await getPageBySlug(slug, params.lang);
+export default async function PageRoute({ params }: { params: Params }) {
+  const { slug, lang } = use(params);
+
+  const pageData: PageData = await getPageBySlug(slug, lang);
 
   if (!pageData) {
     notFound();
