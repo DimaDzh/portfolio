@@ -9,8 +9,9 @@ import axios from "axios";
 const inter = Inter({ subsets: ["latin"] });
 
 async function getMenusList() {
+  const apiUrl = process.env.NEXT_PUBLIC_SERVER_URL;
   try {
-    const response = await axios.get("http://localhost:5000/api/menus");
+    const response = await axios.get(`${apiUrl}/api/menus`);
     return response.data;
   } catch (error) {
     console.error(error);
